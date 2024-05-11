@@ -1,7 +1,22 @@
+const connection = require('../config/database')
+
 const getHomepage = (req, res) =>{
+
+    let users = []
     //this is where we handle data (aka the controller)
-    res.send('Hello World')
-}
+    //also we call model from database in here (if we want)
+    connection.query(
+        'SELECT * FROM Users WHERE Users.id=2',
+        function(err, results, fields){
+            users = results
+            console.log(">>>results: ", results) //rows returned by server
+
+            console.log(">>>check users: ", users)
+            res.send(JSON.stringify(users))       //we need to convert back to string since res.send returns a string     
+        }
+      )
+
+    }
 
 const getABC = (req, res) => {
     res.send('checking')
