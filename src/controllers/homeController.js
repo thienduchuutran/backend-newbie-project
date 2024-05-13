@@ -1,6 +1,6 @@
 const connection = require('../config/database')
 
-const getHomepage = (req, res) =>{
+const getHomepage1 = (req, res) =>{
 
     let users = []
     //this is where we handle data (aka the controller)
@@ -17,6 +17,10 @@ const getHomepage = (req, res) =>{
       )
 
     }
+
+const getHomepage = (req, res) => {
+    return res.render('home.ejs')
+}
 
 const getABC = (req, res) => {
     res.send('checking')

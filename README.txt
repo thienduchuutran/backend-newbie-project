@@ -6,3 +6,6 @@
  connection of the database with this app in a traditional way, which is not optimal at all if there are multiple users query at once. 
  The problem is every time a user retrieves data from the database, they need to run the query once, and so far the query is run directly in the source code,
  without any means of closing a query after being queried successfully, leaving potential loop holes. We gonna learn more about design pattern for database! 
+
+
+ connection pool helps reduce the time connecting to database by REUSING previous connections. Pool limits the number of connections
