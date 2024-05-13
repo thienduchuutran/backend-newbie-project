@@ -30,8 +30,14 @@ const getHoiDanIT = (req, res) => {
     res.render('sample.ejs')
 }
 
+const postCreateUser = (req, res) => {
+    console.log("check req.body: ", req.body)
+    return res.send("create new user")
+}
+
 module.exports = {
     getHomepage,
     getABC,
-    getHoiDanIT
+    getHoiDanIT,
+    postCreateUser,
 }

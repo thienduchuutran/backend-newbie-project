@@ -9,3 +9,8 @@
 
 
  connection pool helps reduce the time connecting to database by REUSING previous connections. Pool limits the number of connections
+
+ the action attribute of the form tag directs user to whatever inside the attribute after clicking submit the form. It has 2 attributes: action and method
+
+ how to get any information that user puts in in the input form?
+ --> use req.body that express supports
