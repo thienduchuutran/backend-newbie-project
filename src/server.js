@@ -26,13 +26,13 @@ configViewEngine(app)
 app.use('/', webRoutes) //this means that all the routes we input will be behind this first param
 
 
-
-connection.query(
-  'SELECT * FROM Users',
-  function(err, results, fields){
-    console.log(">>>results: ", results) //rows returned by server
-  }
-)
+//simple query
+// connection.query(
+//   'SELECT * FROM Users',
+//   function(err, results, fields){
+//     console.log(">>>results: ", results) //rows returned by server
+//   }
+// )
 
 
 app.listen(PORT, hostname, () => {

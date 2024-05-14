@@ -14,3 +14,42 @@
 
  how to get any information that user puts in in the input form?
  --> use req.body that express supports
+
+ the a tag is the get method by default 
+
+
+Whenever we query, to avoid writing a whole thing like this (too long, with async await the code looks cleaner): 
+    connection.query(
+        `INSERT INTO Users (email, name, city)
+        VALUES (?, ?, ?)`,
+        [email, name, city],
+        function(err, result){
+            console.log(result)
+            res.send('create successful')
+        }
+    );
+We use async await
+
+ With async await: 
+ const postCreateUser = async (req, res) => {
+    //let email = req.body.email
+    //let name = req.body.username
+    //let city = req.body.city
+
+    //advanced 
+    let {email, name, city} = req.body
+
+    console.log("check req.body: ", email, name, city)
+
+    let [results, fields] = await connection.query(
+        `INSERT INTO Users (email, name, city) VALUES (?, ?, ?)`, [email, name, city]
+    );
+
+    console.log(">>check results ", results)
+    res.send('create successful')
+
+    // const [results, fields] = await connection.query('SELECT * FROM Users')
+}
+
+
+The await part is to replace the callback in the query

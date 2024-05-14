@@ -19,7 +19,7 @@ const getHomepage1 = (req, res) =>{
     }
 
 const getHomepage = (req, res) => {
-    return res.render('home.ejs')
+    res.render('home.ejs')
 }
 
 const getABC = (req, res) => {
@@ -30,7 +30,7 @@ const getHoiDanIT = (req, res) => {
     res.render('sample.ejs')
 }
 
-const postCreateUser = (req, res) => {
+const postCreateUser = async (req, res) => {
     //let email = req.body.email
     //let name = req.body.username
     //let city = req.body.city
@@ -50,6 +50,26 @@ const postCreateUser = (req, res) => {
             res.send('create successful')
         }
     );
+
+    // let [results, fields] = await connection.query(
+    //     `INSERT INTO Users (email, name, city) VALUES (?, ?, ?)`, [email, name, city]
+    // );
+
+    // console.log(">>check results ", results)
+    // res.send('create successful')
+
+    // connection.query(
+    //     'SELECT * FROM Users',
+    //     function (err, results, fields) {
+    //         console.log(">>>results: ", results)
+    //     }
+    // )
+
+    // const [results, fields] = await connection.query('SELECT * FROM Users')
+}
+
+const getCreatePage = (req, res) =>{
+    res.render('create.ejs')
 }
 
 module.exports = {
@@ -57,4 +77,5 @@ module.exports = {
     getABC,
     getHoiDanIT,
     postCreateUser,
+    getCreatePage,
 }
