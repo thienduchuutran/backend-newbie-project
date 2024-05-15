@@ -1,4 +1,5 @@
 const connection = require('../config/database')
+const {getAllUsers} = require('../services/CRUDServices')
 
 const getHomepage1 = (req, res) =>{
 
@@ -18,8 +19,11 @@ const getHomepage1 = (req, res) =>{
 
     }
 
-const getHomepage = (req, res) => {
-    res.render('home.ejs')
+const getHomepage = async (req, res) => {
+
+    let results = await getAllUsers()
+    //console.log("check rowS: ", results) With this we can see that we got all the data from results variable. Now if we wanna render the data to UI we need to transfer data from homeController.js to home.ejs
+    res.render('home.ejs', {listUsers: results})          //this means we are rendering whatever in home.ejs to the UI
 }
 
 const getABC = (req, res) => {

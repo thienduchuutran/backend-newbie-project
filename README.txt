@@ -53,3 +53,23 @@ We use async await
 
 
 The await part is to replace the callback in the query
+
+
+the [results, fields] expects to be returned an array
+
+We got all the data from results variable in homeController.js. Now if we wanna render the data to UI we need to transfer data from homeController.js to home.ejs
+
+The res.render in homeController.js has 2 parameters, first one is the file we wanna render to UI, second is the data we wanna transfer from current file to the file that 
+gonna be rendered to UI
+
+Now after we transfer the data to home.ejs (embedded JS into a HTML file, which helps us write JS in a HTML file), we can only get the data by using this syntax:
+<%= listUsers%>
+
+NOTICE: HTML doesn't support rendering object type, only string and number type, so we need to
+
+
+CRUDServices file in services folder (we are doing MVC design pattern) contains functions that will do the algorithms to get data. This is how we split the works out
+homeController.js in controllers folder is only to direct where the web users going after clicking any link
+==> We do this all to reduce the code in homeController.js file
+
+Usually when we interact with database, we need to apply async await to wait for the data to be got from the database

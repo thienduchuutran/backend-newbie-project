@@ -2,7 +2,7 @@
 //have to import this first to get any variables from .env
 require('dotenv').config() 
 
-const mysql = require('mysql2');
+const mysql = require('mysql2/promise');
 
 
 //test connection
