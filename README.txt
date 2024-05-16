@@ -73,3 +73,5 @@ homeController.js in controllers folder is only to direct where the web users go
 ==> We do this all to reduce the code in homeController.js file
 
 Usually when we interact with database, we need to apply async await to wait for the data to be got from the database
+
+if we use regular for loop, we need to consider the index i of the array, but if we use forEach loop, it automatically loops through every single element in the array
