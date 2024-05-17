@@ -11,6 +11,13 @@ const getAllUsers = async() =>{
     return results
 }
 
+const getUserById = async(userID) => {
+    let [results, fields] = await connection.query('Select * from Users where id = ?', [userID])
+    
+    let user = results && results.length > 0 ? results[0] : {}  //when we have object in object, if we don't do this to check condition, err
+    return user
+}
+
 module.exports = {
-    getAllUsers
+    getAllUsers, getUserById
 }

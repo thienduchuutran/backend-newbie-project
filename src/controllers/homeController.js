@@ -1,5 +1,5 @@
 const connection = require('../config/database')
-const {getAllUsers} = require('../services/CRUDServices')
+const {getAllUsers, getUserById} = require('../services/CRUDServices')
 
 const getHomepage1 = (req, res) =>{
 
@@ -42,7 +42,7 @@ const postCreateUser = async (req, res) => {
     //advanced 
     let {email, name, city} = req.body
 
-    console.log("check req.body: ", email, name, city)
+    // console.log("check req.body: ", email, name, city)
     //return res.send("create new user")
 
     connection.query(
@@ -76,10 +76,19 @@ const getCreatePage = (req, res) =>{
     res.render('create.ejs')
 }
 
+const getUpdatePage = async (req, res) =>{
+    const userID = req.params.id
+
+    let user = await getUserById(userID)
+    
+    res.render('edit.ejs', {userEdit : user}) // passing the value of user variable to edit.ejs file as userEdit variable
+}
+
 module.exports = {
     getHomepage,
     getABC,
     getHoiDanIT,
     postCreateUser,
     getCreatePage,
+    getUpdatePage
 }

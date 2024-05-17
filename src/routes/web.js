@@ -1,4 +1,4 @@
-const {getHomepage, getABC, getHoiDanIT, postCreateUser, getCreatePage} = require('../controllers/homeController')
+const {getHomepage, getABC, getHoiDanIT, postCreateUser, getCreatePage, getUpdatePage} = require('../controllers/homeController')
 const express = require('express')
 const router = express.Router()
 
@@ -10,6 +10,8 @@ router.get('/abc',getABC)
 router.get('/hoidanit', getHoiDanIT)
 
 router.get('/create', getCreatePage)
+router.get('/update/:id', getUpdatePage)
+
 
 
 //needs to match anything in the action attribute of the form tag

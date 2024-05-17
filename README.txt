@@ -75,3 +75,11 @@ homeController.js in controllers folder is only to direct where the web users go
 Usually when we interact with database, we need to apply async await to wait for the data to be got from the database
 
 if we use regular for loop, we need to consider the index i of the array, but if we use forEach loop, it automatically loops through every single element in the array
+
+Now when we consider edit a current information to a new information, we gotta know the concept of passing parameter on URL (passing parameter through routes) to 
+dynamically get the exact data that we want to edit
+
+
+Before passing value to an ejs file,
+let user = results && results.length > 0 ? results[0] : {}  //when we have object in object, if we don't do this to check condition, err
+
