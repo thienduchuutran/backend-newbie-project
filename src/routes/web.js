@@ -1,4 +1,4 @@
-const {getHomepage, getABC, getHoiDanIT, postCreateUser, getCreatePage, getUpdatePage} = require('../controllers/homeController')
+const {getHomepage, getABC, getHoiDanIT, postCreateUser, getCreatePage, getUpdatePage, postUpdateUser} = require('../controllers/homeController')
 const express = require('express')
 const router = express.Router()
 
@@ -17,5 +17,6 @@ router.get('/update/:id', getUpdatePage)
 //needs to match anything in the action attribute of the form tag
 router.post('/create-user', postCreateUser )
 
+router.post('/update-user', postUpdateUser)
 
 module.exports = router //export default

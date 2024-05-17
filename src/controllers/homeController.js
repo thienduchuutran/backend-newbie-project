@@ -1,5 +1,5 @@
 const connection = require('../config/database')
-const {getAllUsers, getUserById} = require('../services/CRUDServices')
+const {getAllUsers, getUserById, updateUser} = require('../services/CRUDServices')
 
 const getHomepage1 = (req, res) =>{
 
@@ -45,22 +45,22 @@ const postCreateUser = async (req, res) => {
     // console.log("check req.body: ", email, name, city)
     //return res.send("create new user")
 
-    connection.query(
-        `INSERT INTO Users (email, name, city)
-        VALUES (?, ?, ?)`,
-        [email, name, city],
-        function(err, result){
-            console.log(result)
-            res.send('create successful')
-        }
-    );
-
-    // let [results, fields] = await connection.query(
-    //     `INSERT INTO Users (email, name, city) VALUES (?, ?, ?)`, [email, name, city]
+    // await connection.query(
+    //     `INSERT INTO Users (email, name, city)
+    //     VALUES (?, ?, ?)`,
+    //     [email, name, city],
+    //     function(err, result){
+    //         console.log(result)
+    //         res.send('create successful')
+    //     }
     // );
 
+    let [results, fields] = await connection.query(
+        `INSERT INTO Users (email, name, city) VALUES (?, ?, ?)`, [email, name, city]
+    );
+
     // console.log(">>check results ", results)
-    // res.send('create successful')
+    res.send('create successful')
 
     // connection.query(
     //     'SELECT * FROM Users',
@@ -84,11 +84,33 @@ const getUpdatePage = async (req, res) =>{
     res.render('edit.ejs', {userEdit : user}) // passing the value of user variable to edit.ejs file as userEdit variable
 }
 
+const postUpdateUser = async (req, res) => {
+    let {email, name, city, userId} = req.body  //we need one more param which is user id since the database needs to know which user to edit, unlike when we create new user
+
+    // console.log("check req.body: ", email, name, city)
+    //return res.send("create new user")
+
+    // await connection.query(
+    //     `UPDATE Users SET email = ?, name = ?, city = ?
+    //     WHERE id = ?`,
+    //     [email, name, city, userId],
+    //     function(err, result){
+    //         console.log(result)
+    //         res.send('updated successful')
+    //     }
+    // );
+
+    await updateUser(email, name, city, userId)
+    res.redirect("/")
+    // res.render('home.ejs', {listUsers: results})
+}
+
 module.exports = {
     getHomepage,
     getABC,
     getHoiDanIT,
     postCreateUser,
     getCreatePage,
-    getUpdatePage
+    getUpdatePage,
+    postUpdateUser
 }
