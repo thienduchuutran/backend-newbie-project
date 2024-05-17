@@ -83,3 +83,12 @@ dynamically get the exact data that we want to edit
 Before passing value to an ejs file,
 let user = results && results.length > 0 ? results[0] : {}  //when we have object in object, if we don't do this to check condition, err
 
+<form action="">
+    <button>Delete</button>
+</form>
+We cover button with a form so that we can decide which method goes with the button clicking action
+
+To perform an action on an exact user:
+
+first: router.post('/delete-user/:id', postDeleteUser) //dynamically initializing
+second: <form action="/delete-user/<%=user.id%>" method="post"> //dynamically passing
